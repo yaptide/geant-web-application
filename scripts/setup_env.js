@@ -1,0 +1,8 @@
+Module.preRun.push(function () {
+    ENV.G4LEDATA = '/data/G4EMLOW8.6.1';
+    ENV.G4LEVELGAMMADATA = '/data/PhotonEvaporation6.1';
+    ENV.G4NEUTRONHPDATA = '/data/G4NDL4.7.1';
+    ENV.G4ENSDFSTATEDATA = '/data/G4ENSDFSTATE3.0';
+    ENV.G4SAIDXSDATA = '/data/G4SAIDDATA2.0';
+    ENV.G4PARTICLEXSDATA = '/data/G4PARTICLEXS4.1'
+});
