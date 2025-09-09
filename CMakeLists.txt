@@ -7,13 +7,46 @@ set (CMAKE_CXX_STANDARD 17)
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
+if (NOT DEFINED EXPAT_INCLUDE_DIR)
+        message( FATAL_ERROR "You must specify EXPAT_INCLUDE_DIR")
+endif()
+
+if (NOT DEFINED EXPAT_LIBRARY)
+        message( FATAL_ERROR "You must specify EXPAT_LIBRARY")
+endif()
+
+if (NOT DEFINED XercesC_INCLUDE_DIR)
+        message( FATAL_ERROR "You must specify XercesC_INCLUDE_DIR")
+endif()
+
+if (NOT DEFINED XercesC_LIBRARY) 
+        message( FATAL_ERROR "You must specify XercesC_LIBRARY")
+endif()
+
 if (DEFINED EMSCRIPTEN)
-        set(EXPAT_INCLUDE_DIR "/workspaces/cpp/sources/expat-2.6.4/wasm/install/include")
-        set(EXPAT_LIBRARY "/workspaces/cpp/sources/expat-2.6.4/wasm/install/lib/libexpat.a")
-        set(XercesC_INCLUDE_DIR "/workspaces/cpp/sources/xerces-c-3.3.0/wasm/install/include")
-        set(XercesC_LIBRARY "/workspaces/cpp/sources/xerces-c-3.3.0/wasm/install/lib/libxerces-c-3.3.a")
-        set(Geant4_DIR "/workspaces/cpp/geant4/wasm/install/lib/cmake/Geant4")
-        set(PTL_DIR "/workspaces/cpp/geant4/wasm/install/lib/cmake/Geant4/PTL")
+        if (NOT DEFINED Geant4_DIR)
+                message( FATAL_ERROR "You must specify Geant4_DIR")
+        endif()
+
+        if (NOT DEFINED PTL_DIR)
+                message( FATAL_ERROR "You must specify PTL_DIR")
+        endif()
+
+        if (NOT DEFINED LAZY_GENERATOR)
+                message( FATAL_ERROR "You must specify LAZY_GENERATOR")
+        endif()
+
+        if (NOT DEFINED DATASETS_SOURCE_DIR)
+                message( FATAL_ERROR "You must specify DATASETS_SOURCE_DIR")
+        endif()
+
+        if (NOT DEFINED DATASETS_LIST)
+                message( FATAL_ERROR "You must specify DATASETS_LIST")
+        endif()
+
+        if (NOT DEFINED EMSCRIPTEN_FILE_PACKAGER)
+                message( FATAL_ERROR "You must specify EMSCRIPTEN_FILE_PACKAGER")
+        endif()
 
         find_package(Geant4 REQUIRED ui_all)
 
@@ -39,19 +72,11 @@ if (DEFINED EMSCRIPTEN)
                 --emit-tsd "geant4_wasm.d.ts"
         )
 
-        set(DATASETS_SOURCE_DIR "/workspaces/cpp/geant4/datasets")
-        set(DATASETS_LIST 
-                "G4EMLOW8.6.1"
-                "PhotonEvaporation6.1"
-                "G4NDL4.7.1"
-                "G4SAIDDATA2.0"
-                "G4ENSDFSTATE3.0"
-                "G4PARTICLEXS4.1"
-        )
         set(DATASETS_TARGET_DIR "data")
         set(JS_TARGET_DIR "js")
 
-        set(EMSCRIPTEN_FILE_PACKAGER "$ENV{EMSDK}/upstream/emscripten/tools/file_packager.py")
+        message(${EMSCRIPTEN_FILE_PACKAGER})
+
         find_package(Python REQUIRED)
         foreach(dataset ${DATASETS_LIST})
                 set(DATASET_SOURCE_DIR "${DATASETS_SOURCE_DIR}/${dataset}")
@@ -59,6 +84,10 @@ if (DEFINED EMSCRIPTEN)
                 set(DATASET_TARGET "${DATASET_MAP_DIR}.data")
                 set(JS_TARGET "${JS_TARGET_DIR}/preload_${dataset}.js")
                 set(DATASET_FILE "${DATASET_SOURCE_DIR}@${DATASET_MAP_DIR}")
+
+                message(${DATASET_SOURCE_DIR})
+                message(${DATASET_MAP_DIR})
+                
                 add_custom_command(
                         TARGET geant4_wasm POST_BUILD
                         COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}/${DATASETS_TARGET_DIR}
@@ -75,7 +104,6 @@ if (DEFINED EMSCRIPTEN)
                 )
         endforeach(dataset ${DATASETS_LIST})
 
-        set(LAZY_GENERATOR "/workspaces/geant-wasm/emscripten_utils/lazy_json_generator.py")
         find_package(Python REQUIRED)
         foreach(dataset ${DATASETS_LIST})
                 set(DATASET_SOURCE_DIR "${DATASETS_SOURCE_DIR}/${dataset}")
@@ -90,11 +118,6 @@ if (DEFINED EMSCRIPTEN)
                 )
         endforeach(dataset ${DATASETS_LIST})
 else()
-        set(EXPAT_INCLUDE_DIR "/workspaces/cpp/sources/expat-2.6.4/install/include")
-        set(EXPAT_LIBRARY "/workspaces/cpp/sources/expat-2.6.4/install/lib/libexpat.so")
-        set(XercesC_INCLUDE_DIR "/workspaces/cpp/sources/xerces-c-3.3.0/install/include")
-        set(XercesC_LIBRARY "/workspaces/cpp/sources/xerces-c-3.3.0/install/lib/libxerces-c.so")
-
         find_package(Geant4 PATHS "/workspaces/cpp/geant4/install" REQUIRED ui_all)
 
 	add_library(geant4_wasm geant4.cpp ${sources} ${headers})

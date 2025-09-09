@@ -2,14 +2,11 @@
 set -e # exit script on any command fail
 
 module add cmake
-module add rclone
 
 EMSDK_VERSION=4.0.13
 WGET_FLAG=-N
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-\. "$HOME/.nvm/nvm.sh"
-nvm install 22
+npm config set prefix ~/.npm_global
 
 FORCE=0
 
@@ -90,7 +87,7 @@ pushd $MEMFS
                     ..
 
                 emmake make -j
-                emmake make install
+                make install
             popd
         popd
 
@@ -99,7 +96,7 @@ pushd $MEMFS
             pushd build
                 emcmake cmake -DCMAKE_INSTALL_PREFIX=../install ..
                 emmake make -j
-                emmake make install
+                make install
             popd
         popd
 
@@ -123,8 +120,14 @@ pushd $MEMFS
                     -DGEANT4_USE_GDML=ON \
                     ../../geant4-v11.3.2
             
-                emmake make -j
+                emmake make -j 14
                 make install
             popd
         popd
+
+    popd
+
+    mkdir -p bucket-staging/geant4-wasm/datasets
+
+    cp -au sources/geant4/datasets/. bucket-staging/geant4-wasm/datasets/.
 popd
