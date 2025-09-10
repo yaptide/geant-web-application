@@ -111,7 +111,7 @@ if (DEFINED EMSCRIPTEN)
                         TARGET geant4_wasm POST_BUILD
                         COMMAND ${Python_EXECUTABLE} ${LAZY_GENERATOR} 
                                 --input "${DATASET_SOURCE_DIR}"
-                                --url "/geant4_wasm/data/${dataset}"
+                                --url "https://s3p.cloud.cyfronet.pl/geant4-wasm/datasets/${dataset}"
                                 --output "${PROJECT_BINARY_DIR}/lazy_files/load_${dataset}.json"
                                 --vpath "/data/${dataset}"
                         COMMENT "Packaging dataset ${dataset} for Emscripten"

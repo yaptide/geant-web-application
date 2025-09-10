@@ -44,7 +44,7 @@ pushd $MEMFS
             wget ${WGET_FLAG} https://github.com/emscripten-core/emsdk/archive/refs/tags/${EMSDK_VERSION}.tar.gz
             wget ${WGET_FLAG} https://github.com/libexpat/libexpat/releases/download/R_2_6_4/expat-2.6.4.tar.gz
             wget ${WGET_FLAG} https://dlcdn.apache.org/xerces/c/3/sources/xerces-c-3.3.0.tar.gz
-            wget ${WGET_FLAG} https://gitlab.cern.ch/geant4/geant4/-/archive/v11.3.2/geant4-v11.3.2.tar.gz
+            wget ${WGET_FLAG} https://codeload.github.com/Geant4/geant4/tar.gz/refs/tags/v11.3.2 -O geant4-v11.3.2.tar.gz
         popd
 
         pushd geant4/datasets
@@ -68,7 +68,7 @@ pushd $MEMFS
         unpack_file downloads/${EMSDK_VERSION}.tar.gz emsdk-${EMSDK_VERSION}
         unpack_file downloads/expat-2.6.4.tar.gz expat-2.6.4
         unpack_file downloads/xerces-c-3.3.0.tar.gz xerces-c-3.3.0
-        unpack_file downloads/geant4-v11.3.2.tar.gz geant4-v11.3.2
+        unpack_file downloads/geant4-v11.3.2.tar.gz geant4-11.3.2
 
         pushd emsdk-${EMSDK_VERSION}
             ./emsdk install ${EMSDK_VERSION}
@@ -118,7 +118,7 @@ pushd $MEMFS
                     -DGEANT4_BUILD_BUILTIN_BACKTRACE=OFF \
                     -DGEANT4_INSTALL_DATA=OFF \
                     -DGEANT4_USE_GDML=ON \
-                    ../../geant4-v11.3.2
+                    ../../geant4-11.3.2
             
                 emmake make -j 14
                 make install
