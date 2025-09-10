@@ -13,3 +13,9 @@ RCLONE_CONFIG_GEANT4_WEB_REGION=
 RCLONE_CONFIG_GEANT4_WEB_LOCATION_CONSTRAINT=
 RCLONE_CONFIG_GEANT4_WEB_ACL=private
 ```
+
+```
+./prepare.sh
+./compile_application.sh
+./publish.sh
+```
