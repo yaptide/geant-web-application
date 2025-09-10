@@ -1,12 +1,18 @@
 {
-    "Version": "2025-09-09",
-    "Statement": [
+  "Version": "2008-10-17",
+  "Statement": [
     {
-        "Sid": "AllowPublicRead",
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": ["s3:GetObject"],
-        "Resource": ["arn:aws:s3:::geant4-wasm/*"]
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::geant4-wasm/*"
+      ]
     }
   ]
 }
