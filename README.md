@@ -18,4 +18,5 @@ RCLONE_CONFIG_GEANT4_WEB_ACL=private
 ./prepare.sh
 ./compile_application.sh
 ./publish.sh
+./publish_repo.sh
 ```
