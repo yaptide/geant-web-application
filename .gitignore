@@ -2,3 +2,4 @@
 .build
 .env
 .s3cfg
+.ipynb_checkpoints

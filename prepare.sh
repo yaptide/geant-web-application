@@ -86,7 +86,7 @@ pushd $MEMFS
                     -DCMAKE_INSTALL_PREFIX=../install   \
                     ..
 
-                emmake make -j
+                emmake make -j 30
                 make install
             popd
         popd
@@ -95,7 +95,7 @@ pushd $MEMFS
             mkdir -p {build,install}
             pushd build
                 emcmake cmake -DCMAKE_INSTALL_PREFIX=../install ..
-                emmake make -j
+                emmake make -j 30
                 make install
             popd
         popd
@@ -120,7 +120,7 @@ pushd $MEMFS
                     -DGEANT4_USE_GDML=ON \
                     ../../geant4-11.3.2
             
-                emmake make -j 14
+                emmake make -j 30
                 make install
             popd
         popd

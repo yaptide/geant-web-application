@@ -1,3 +1,5 @@
+#!/bin/bash
+
 module add cmake/3.24.3
 PATH=$PATH:~/.npm_global/bin
 
@@ -26,6 +28,7 @@ pushd $MEMFS
         mkdir -p $MEMFS/bucket-staging/geant4-wasm
         mkdir -p $MEMFS/bucket-staging/geant4-wasm/datafiles
         mkdir -p $MEMFS/bucket-staging/geant4-wasm/lazy_files_metadata
+        
 
         yes | cp -f build/geant4_wasm.wasm $MEMFS/bucket-staging/geant4-wasm/geant4_wasm.wasm
         yes | cp -rf build/data/* $MEMFS/bucket-staging/geant4-wasm/datafiles
