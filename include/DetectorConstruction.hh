@@ -1,6 +1,6 @@
 #pragma once
 
-#include "G4VUserDetectorConstruction.hh"
+#include <G4VUserDetectorConstruction.hh>
 
 class DetectorConstruction : public G4VUserDetectorConstruction {
 public:

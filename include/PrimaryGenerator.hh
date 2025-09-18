@@ -1,7 +1,7 @@
 #pragma once
 
-#include "G4VUserPrimaryGeneratorAction.hh"
-#include "G4GeneralParticleSource.hh"
+#include <G4VUserPrimaryGeneratorAction.hh>
+#include <G4GeneralParticleSource.hh>
 
 class PrimaryGenerator : public G4VUserPrimaryGeneratorAction {
 public:

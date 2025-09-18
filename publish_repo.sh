@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # exit script on any command fail
 
-git config url."git@github.com:".insteadOf "https://github.com/"
+git config --local url."git@github.com:".insteadOf "https://github.com/"
 
 pushd $MEMFS
         rm -rf geant-web-stubs

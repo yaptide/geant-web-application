@@ -1,7 +1,7 @@
 #pragma once
 
-#include "G4UserRunAction.hh"
-#include "G4RootAnalysisManager.hh"
+#include <G4UserRunAction.hh>
+#include <G4RootAnalysisManager.hh>
 
 using G4AnalysisManager = G4RootAnalysisManager;
 

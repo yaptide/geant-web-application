@@ -6,10 +6,12 @@
 
 #include <string>
 
+void Geant4SetProgressFunction(uint64_t functionPointer);
 int Geant4GDMRun(const std::string& gdml_file, const std::string& macro_file);
 
 #ifdef __EMSCRIPTEN__
 EMSCRIPTEN_BINDINGS(geant4) {
+    emscripten::function("Geant4SetProgressFunction", &Geant4SetProgressFunction);
     emscripten::function("Geant4GDMRun", &Geant4GDMRun);
 }
 #endif

@@ -1,4 +1,5 @@
 #include "ActionInitialization.hh"
+#include "EventAction.hh"
 
 void ActionInitialization::Build() const {
     PrimaryGenerator *generator = new PrimaryGenerator;
@@ -6,4 +7,7 @@ void ActionInitialization::Build() const {
 
     RunAction *runAction = new RunAction();
     SetUserAction(runAction);
+
+    EventAction *eventAction = new EventAction(runAction);
+    SetUserAction(eventAction);
 }

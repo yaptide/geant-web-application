@@ -63,7 +63,8 @@ if (DEFINED EMSCRIPTEN)
                          -s TOTAL_MEMORY=512MB \
                          -s ENVIRONMENT='worker' \
                          -s FORCE_FILESYSTEM  \
-                         -s EXPORTED_RUNTIME_METHODS='[\"FS\"]' \
+                         -s EXPORTED_RUNTIME_METHODS='[\"FS\", \"addFunction\"]' \
+                         -s ALLOW_TABLE_GROWTH \
                          --use-preload-cache \
                          --pre-js ./setup_env.js \
                          -lembind")
