@@ -1,6 +1,4 @@
-#include "GDML_PrimaryGenerator.hh"
-
-using namespace gdml;
+#include "PrimaryGenerator.hh"
 
 PrimaryGenerator::PrimaryGenerator() {
     fParticleSource = new G4GeneralParticleSource();

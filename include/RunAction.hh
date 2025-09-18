@@ -1,35 +1,12 @@
 #pragma once
 
 #include "G4UserRunAction.hh"
+#include "G4RootAnalysisManager.hh"
 
-#include "G4Accumulable.hh"
-#include "globals.hh"
+using G4AnalysisManager = G4RootAnalysisManager;
 
-class G4Run;
-
-namespace B1
-{
-
-/// Run action class
-///
-/// In EndOfRunAction(), it calculates the dose in the selected volume
-/// from the energy deposit accumulated via stepping and event actions.
-/// The computed dose is then printed on the screen.
-
-class RunAction : public G4UserRunAction
-{
-  public:
-    RunAction();
-    ~RunAction() override = default;
-
-    void BeginOfRunAction(const G4Run*) override;
-    void EndOfRunAction(const G4Run*) override;
-
-    void AddEdep(G4double edep);
-
-  private:
-    G4Accumulable<G4double> fEdep = 0.;
-    G4Accumulable<G4double> fEdep2 = 0.;
+class RunAction : public G4UserRunAction {
+public:
+    void BeginOfRunAction(const G4Run *) override;
+    void EndOfRunAction(const G4Run *) override;
 };
-
-}  // namespace B1

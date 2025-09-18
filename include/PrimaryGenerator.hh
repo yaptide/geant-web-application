@@ -3,13 +3,7 @@
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4GeneralParticleSource.hh"
 
-namespace gdml
-{
-    class PrimaryGenerator;
-};
-
-
-class gdml::PrimaryGenerator : public G4VUserPrimaryGeneratorAction {
+class PrimaryGenerator : public G4VUserPrimaryGeneratorAction {
 public:
     PrimaryGenerator();
     ~PrimaryGenerator() override;

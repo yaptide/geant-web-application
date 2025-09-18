@@ -1,6 +1,4 @@
-#include "GDML_PhysicsList.hh"
-
-using namespace gdml;
+#include "PhysicsList.hh"
 
 PhysicsList::PhysicsList() {
     RegisterPhysics(new G4EmStandardPhysics());

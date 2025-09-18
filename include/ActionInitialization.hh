@@ -1,20 +1,10 @@
 #pragma once
 
 #include "G4VUserActionInitialization.hh"
+#include "PrimaryGenerator.hh"
+#include "RunAction.hh"
 
-namespace B1
-{
-
-/// Action initialization class.
-
-class ActionInitialization : public G4VUserActionInitialization
-{
-  public:
-    ActionInitialization() = default;
-    ~ActionInitialization() override = default;
-
-    void BuildForMaster() const override;
+class ActionInitialization : public G4VUserActionInitialization {
+public:
     void Build() const override;
 };
-
-}
