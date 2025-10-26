@@ -4,8 +4,8 @@ project(geant4_wasm)
 
 set (CMAKE_CXX_STANDARD 17)
 
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+file(GLOB sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc)
+file(GLOB headers ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hh)
 
 if (NOT DEFINED EXPAT_INCLUDE_DIR)
         message( FATAL_ERROR "You must specify EXPAT_INCLUDE_DIR")
@@ -124,6 +124,7 @@ else()
 	add_library(geant4_wasm geant4.cpp ${sources} ${headers})
 
         target_include_directories(geant4_wasm PRIVATE include)
+        target_include_directories(geant4_wasm PUBLIC .)
         target_link_libraries(geant4_wasm PRIVATE ${Geant4_LIBRARIES})
 endif()
 

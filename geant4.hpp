@@ -5,6 +5,7 @@
 #endif
 
 #include <string>
+#include <cstdint>
 
 void Geant4SetProgressFunction(uint64_t functionPointer);
 int Geant4GDMRun(const std::string& gdml_file, const std::string& macro_file);
