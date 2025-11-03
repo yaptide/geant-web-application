@@ -2,8 +2,9 @@
 
 #include <G4VModularPhysicsList.hh>
 #include <G4EmStandardPhysics.hh>
+#include <QBBC.hh>
 
-class PhysicsList : public G4VModularPhysicsList {
+class PhysicsList : public QBBC {
 public:
-    PhysicsList();
+    PhysicsList() {}
 };
