@@ -18,7 +18,7 @@ pushd $MEMFS
             -DGeant4_DIR=$MEMFS/sources/geant4/install/lib/cmake/Geant4 \
             -DPTL_DIR=$MEMFS/sources/geant4/install/lib/cmake/Geant4/PTL \
             -DDATASETS_SOURCE_DIR=$MEMFS/sources/geant4/datasets \
-            "-DDATASETS_LIST=G4EMLOW8.6.1;PhotonEvaporation6.1;G4NDL4.7.1;G4SAIDDATA2.0;G4ENSDFSTATE3.0;G4PARTICLEXS4.1"\
+            "-DDATASETS_LIST=G4EMLOW8.6.1;PhotonEvaporation6.1;G4NDL4.7.1;G4SAIDDATA2.0;G4ENSDFSTATE3.0;G4PARTICLEXS4.1" \
             -DLAZY_GENERATOR=$MEMFS/geant-web-application/utils/lazy_json_generator.py \
             -DEMSCRIPTEN_FILE_PACKAGER=$MEMFS/sources/emsdk-4.0.13/upstream/emscripten/tools/file_packager.py
 

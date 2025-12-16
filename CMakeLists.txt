@@ -7,44 +7,46 @@ set (CMAKE_CXX_STANDARD 17)
 file(GLOB sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hh)
 
-if (NOT DEFINED EXPAT_INCLUDE_DIR)
+if (NOT EXPAT_INCLUDE_DIR)
         message( FATAL_ERROR "You must specify EXPAT_INCLUDE_DIR")
 endif()
 
-if (NOT DEFINED EXPAT_LIBRARY)
+if (NOT EXPAT_LIBRARY)
         message( FATAL_ERROR "You must specify EXPAT_LIBRARY")
 endif()
 
-if (NOT DEFINED XercesC_INCLUDE_DIR)
+if (NOT XercesC_INCLUDE_DIR)
         message( FATAL_ERROR "You must specify XercesC_INCLUDE_DIR")
 endif()
 
-if (NOT DEFINED XercesC_LIBRARY) 
+if (NOT XercesC_LIBRARY) 
         message( FATAL_ERROR "You must specify XercesC_LIBRARY")
 endif()
 
-if (DEFINED EMSCRIPTEN)
-        if (NOT DEFINED Geant4_DIR)
+if (EMSCRIPTEN)
+        if (NOT  Geant4_DIR)
                 message( FATAL_ERROR "You must specify Geant4_DIR")
         endif()
 
-        if (NOT DEFINED PTL_DIR)
+        if (NOT PTL_DIR)
                 message( FATAL_ERROR "You must specify PTL_DIR")
         endif()
 
-        if (NOT DEFINED LAZY_GENERATOR)
+        if (NOT LAZY_GENERATOR)
                 message( FATAL_ERROR "You must specify LAZY_GENERATOR")
         endif()
 
-        if (NOT DEFINED DATASETS_SOURCE_DIR)
+        if (NOT DATASETS_SOURCE_DIR)
                 message( FATAL_ERROR "You must specify DATASETS_SOURCE_DIR")
         endif()
 
-        if (NOT DEFINED DATASETS_LIST)
+        if (NOT DATASETS_LIST)
                 message( FATAL_ERROR "You must specify DATASETS_LIST")
         endif()
 
-        if (NOT DEFINED EMSCRIPTEN_FILE_PACKAGER)
+        message()
+
+        if (NOT EMSCRIPTEN_FILE_PACKAGER)
                 message( FATAL_ERROR "You must specify EMSCRIPTEN_FILE_PACKAGER")
         endif()
 

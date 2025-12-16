@@ -82,7 +82,8 @@ pushd $MEMFS
             pushd build
                 emcmake cmake                           \
                     -Dnetwork-accessor=socket           \
-                    -DCMAKE_BUILD_TYPE=Release          \
+                    -Dtranscoder=iconv                          \
+                    -DCMAKE_BUILD_TYPE=Release        \
                     -DCMAKE_INSTALL_PREFIX=../install   \
                     ..
 
